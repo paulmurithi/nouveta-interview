@@ -1,0 +1,167 @@
+#footer{
+    background-color:  	rgba(0,0,0,0.9);
+    position: relative;
+    height: auto;
+    /*margin-top: -232px;*/
+    clear: both;
+    color: #fffceb;
+}
+.header.index_title{
+    padding:0;
+}
+.header .index_title{
+    padding-left: 7%;
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+.header .index_title .company_name{
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 2em;
+    color: #96ccff;
+}
+.header_contacts{
+    float: right;
+    margin-top: 20px;
+}
+.header_quicklinks{
+    float: right;
+    margin-top: 50px;
+}
+.header_quicklinks>li, .header_contacts>li{
+    display: inline;
+	list-style-type: none;
+	font-family: sans-serif;
+	font-size: 0.9em;
+	border:none;
+    /*border-right: 1px solid #96ccff;*/
+    /*padding-right: 10px;*/
+    background-color: #0f0f0f;
+    padding: 10px;
+    color: #fff;
+    border-radius: 20px;
+    font-weight: bold;
+
+}
+.header_contacts>li{
+    font-size: 0.98em;
+    /*padding-top: 10px;*/
+}
+#footer .footer_top .footer_newsletter input[type=email]{
+    border: 0;
+    padding: 6px 8px;
+    width: 70%;
+    color: #0e0e0e;
+}
+#footer .footer_top .footer_newsletter input[type=submit]{
+    background: #f4511e;
+    border: 0;
+    width: 25%;
+    padding: 6px 0px;
+    text-align: center;
+    color: #fff;
+    transition: 0.3s;
+    cursor: pointer;
+}
+#footer .footer_top .footer_newsletter input[type=submit]:hover{
+    background-color: #13a456;
+}
+#footer .copyright{
+    background-color:rgba(0,0,0);
+    text-align: center;
+    font-size: 13px;
+    color: #ddd;
+    padding: 20px;
+    margin-top: 5px;
+}
+.footer_heading{
+    margin-top:20px;
+    border-bottom: 1px dashed #0d5aa7;
+    color: #fffceb;
+}
+#footer>.footer_top>.container>.row>.footer_links{
+    height: auto;
+    margin: auto;
+}
+#footer>.footer_top>.container>.row>.footer_links>ul{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+#footer>.footer_top>.container>.row>.footer-links>ul>li{
+    display: none;
+    margin: 0px 1px;
+}
+#footer>.footer_top>.container>.row>.footer-links>ul>li>a{
+    /*text-decoration: none;*/
+    color: #fff;
+    font-size: 3.5em;
+}
+#footer>.footer_top>.container>.row>.footer-contact{
+    height: auto;
+    margin: auto;
+}
+#footer>.footer_top>.container>.row>.footer-contact>ul{
+    margin: 0;
+    padding: 0;
+}
+#footer>.footer_top>.container>.row>.footer-contact>ul>li{
+    display: inline-block;
+    margin: 0px 1px;
+}
+#footer>.footer_top>.container>.row>.footer-contact>ul>li>a{
+    color: #fff;
+    font-size: 1.5em;
+    display: block;
+}
+#footer>.footer_top>.container>.row>.footer-contact>ul>li>a>i{
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+    text-align: center;
+    border-radius: 100%;
+}
+#footer>.footer_top>.container>.row>.footer-contact>ul>li>a>.fa-facebook{
+    border: 1px solid  	#3b5998;
+    color: #3b5998;
+}
+#footer>.footer_top>.container>.row>.footer-contact>ul>li>a>.fa-facebook:hover{
+    border: 1px solid#8b9dc3;
+    color: #8b9dc3;
+}
+#footer>.footer_top>.container>.row>.footer-contact>ul>li>a>.fa-twitter{
+    border: 1px solid  	#1da1f2;
+    color: #1da1f2;
+}
+#footer>.footer_top>.container>.row>.footer-contact>ul>li>a>.fa-twitter:hover{
+    border: 1px solid  	#AAB8C2;
+    color: #AAB8C2;
+}
+#footer>.footer_top>.container>.row>.footer-contact>ul>li>a>.fa-instagram{
+    border: 1px solid  	 #8a3ab9;
+    color:  #8a3ab9;
+}
+#footer>.footer_top>.container>.row>.footer-contact>ul>li>a>.fa-instagram:hover{
+    border: 1px solid  	  #cd486b;
+    color:   #cd486b;
+}
+#footer>.footer_top>.container>.row>.footer-contact>ul>li>a>.fa-google-plus{
+    border: 1px solid  	 #DD4B39;
+    color:  #DD4B39;
+}
+#footer>.footer_top>.container>.row>.footer-contact>ul>li>a>.fa-google-plus:hover{
+    border: 1px solid  	 #EA9085;
+    color:  #EA9085;
+}
+#footer>.footer_top>.container>.row>.footer-contact>ul>li>a>.fa-linkedin{
+    border: 1px solid  	 #0077b5;
+    color:  #0077b5;
+}
+#footer>.footer_top>.container>.row>.footer-contact>ul>li>a>.fa-linkedin:hover{
+    border: 1px solid #8d6cab;
+    color: #8d6cab;
+}
+#footer>.footer_top>.container>.row>.footer-contact>ul>li>a:hover>.fa{
+    transform: rotate(360deg);
+    -webkit-transform: rotateY(360deg);
+    -moz-transform: rotateY(360deg);
+}

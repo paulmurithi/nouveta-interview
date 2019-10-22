@@ -1,0 +1,27 @@
+{% extends 'rejco/customer/base.html' %}
+{% load static %}
+
+
+{% block content%}
+    <table class="table table-hover table-striped">
+    <thead>
+      <tr>
+        <th>No.</th>
+        <th>Origin</th>
+        <th>Destination</th>
+        <th>Dispatched</th>
+        <th>Arrived</th>
+    </thead>
+    <tbody>
+    {% for package in packages%}
+      <tr>
+      <td>{{forloop.counter}}.</td>
+        <td>{{package.origin}}</td>
+        <td>{{package.destination}}</td>
+        <td>{{package.dispatched}}</td>
+        <td>{{package.arrived}}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

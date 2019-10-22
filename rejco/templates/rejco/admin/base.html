@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>{% block title%}{% endblock%}</title>
+    <script type="text/javascript" src="{% static 'rejco/js/jquery-3.2.1.min.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'rejco/bootstrap-3.3.6/css/bootstrap.min.css'%}">
+    <link rel="stylesheet" type="text/css" href="{% static 'rejco/Font-Awesome-master/css/font-awesome.min.css'%}">
+    <script type="text/javascript" src="{% static 'rejco/bootstrap-3.3.6/js/bootstrap.min.js'%}"></script>
+    {% block header %}{% endblock %}
+</head>
+
+<body>
+    <div class="content container_fluid">
+
+    {% comment %} navigation bar common to all pages {% endcomment %}
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                <a class="navbar-brand" href="/">Rejco courier</a>
+                </div>
+                <ul class="nav navbar-nav">
+                <li class="active"><a href="/">Home</a></li>
+                </ul>
+
+                {% if request.user %}
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#"><li><a href="#"><i class="fa fa-bell"></i><span class="badge">5</span></li></a></li>
+                        <li><a href="#"><span class="badge"><i class="fa fa-user"></i>{{request.user}} </a></span></li>
+                        <li><a href={% url 'logout'%}>logout</a></span></li>
+                    </ul
+                {% else %}
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href={% url 'rejco:register' %}><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                    <li><a href={% url 'login' %}><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                </ul>
+                {% endif %}
+            </div>
+        </nav>
+
+        {% comment %} dynamic page content {% endcomment %}
+        {% block content %}
+        {% endblock %}
+    <div>
+</body>
+
+</html>

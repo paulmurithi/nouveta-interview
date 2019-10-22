@@ -1,0 +1,22 @@
+{% extends "rejco/customer/base.html" %}
+{% load static %}
+{% block title%}Login{% endblock%}
+{% block header %}
+    <link rel="stylesheet" type="text/css" href="{% static 'rejco/css/login.css' %}">
+{% endblock %}
+{% block content%}
+    <div class="row ">
+        <div class="col-sm-4 col-sm-offset-4 login-box">
+            <img src="{% static 'rejco/images/avatar.png'%}" class="avatar">
+            {% if title %}
+               <h1>{{title}}</h1>
+            {% endif %}
+            <form class="form-horizontal" action="" method="post" enctype="multipart/form-data" role="form">
+                {% csrf_token%}
+                {{form.as_p}}
+                <input type="submit" value="Register" class="btn btn-default">
+                <a href={% url 'password_reset'%}>Forgot password</a><a href={% url 'login'%}>Login</a>
+            </form>
+        </div>
+    </div>
+{% endblock%}

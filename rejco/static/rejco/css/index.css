@@ -1,0 +1,39 @@
+.content{
+    background-image: url(../images/waves.jpeg);
+}
+
+.services{
+    padding:5rem 0;
+    background: #e0dfdf;
+    text-align: center;
+}
+.services-center{
+width:90vw;
+margin: 0 auto;
+display:grid;
+grid-template-columns: repeat(auto-fit,minmax(255px,1ftr));
+grid-row-gap: 2rem;
+grid-column-gap: 50px;
+}
+.service span{
+    display: inline-block;
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+.service h6{
+    /* line-spacing:; */
+    text-transform: capitalize;
+}
+.service img{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+.services #underline{
+    width: 7rem;
+    height: 5px;
+    background-color: #554e4e;
+    margin: 0 auto;
+    margin-bottom: 5px;
+}
