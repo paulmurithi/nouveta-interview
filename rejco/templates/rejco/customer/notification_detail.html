@@ -9,8 +9,8 @@
         <th>No.</th>
         <th>Origin</th>
         <th>Destination</th>
-        <th>Dispatch status</th>
-        <th>Arrival status</th>
+        <th>Dispatched</th>
+        <th>Arrived</th>
     </thead>
     <tbody>
     {% for package in packages%}
@@ -18,17 +18,8 @@
       <td>{{forloop.counter}}.</td>
         <td>{{package.origin}}</td>
         <td>{{package.destination}}</td>
-        {% if package.dispatched %}
-          <td>dispatched</td>
-        {% else %}
-          <td>not yet dispached</td>
-        {% endif %}
-        
-        {% if package.arrived %}
-          <td>delivered</td>
-        {% else %}
-          <td>not yet delivered</td>
-        {% endif %}
+        <td>{{package.dispatched}}</td>
+        <td>{{package.arrived}}</td>
       </tr>
     {% endfor %}
     </tbody>

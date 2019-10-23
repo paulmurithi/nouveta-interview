@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views import View
-from .models import Package
+from .models import Package, Notification
 from .forms import Register
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.models import User
@@ -19,12 +19,12 @@ class Register(View):
         return render(request, self.template, { 'form' : form })
         
     def post(self, request):
-        form = self.form(request.POST)
+        form = self.form_class(request.POST)
         print('not validated')
         
         if form.is_valid():
             print('validated')
-            email = form.cleaned_data['username']
+            username = form.cleaned_data['username']
             email = form.cleaned_data['email']
             password = form.cleaned_data['password']
 
@@ -52,67 +52,76 @@ class WebsiteIndex(View):
     template = "rejco/index.html"
 
     def get(self, request):
-        return render(request, self.template, {})
+        if request.user.is_authenticated:
+            if request.user.is_staff:
+                return redirect('rejco:admin')
+            else:
+                return redirect('rejco:customer')
+        else:
+            return render(request, self.template, {})
 
-class CustomerIndex(LoginRequiredMixin, UserPassesTestMixin, View):
+class CustomerIndex(LoginRequiredMixin,  View):
     login_url = settings.LOGIN_URL
     template = "rejco/customer/index.html"
-
-    #test if the user customer
-    def test_func(self):
-        user = self.request.user
-        return Student.objects.filter(adm_no=user).exists()
 
     def get(self, request):
         user = self.request.user
         packages = Package.objects.filter(owner = user)
         print(packages)
-        return render(request, self.template, {'packages':packages})
+        notifications = Notification.objects.filter(user = user, viewed=False)
+        return render(request, self.template, {'packages':packages, 'notifications': notifications})
 
-class AdminIndex(LoginRequiredMixin, UserPassesTestMixin,View):
+class AdminIndex(LoginRequiredMixin, View):
     login_url = settings.LOGIN_URL
     template = "rejco/admin/index.html"
-
-    #test if the user admin
-    def test_func(self):
-        user = self.request.user
-        return Student.objects.filter(adm_no=user).exists()
 
     def get(self, request):
         packages = Package.objects.all()
         print(packages)
         return render(request, self.template, {'packages':packages})
 
-class UpdateDispatchStatus(LoginRequiredMixin, UserPassesTestMixin,View):
+class UpdateDispatchStatus(LoginRequiredMixin, View):
     login_url = settings.LOGIN_URL
     template = "rejco/admin/index.html"
 
-    #test if the user admin
-    def test_func(self):
-        user = self.request.user
-        return Student.objects.filter(adm_no=user).exists()
-
-    def post(self, request, packageId):
-        package = Package.objects.get(id=packageId)
-        dispatch = package.dispatch
-        package.dispatch = not dispatch
+    def get(self, request, id):
+        package = Package.objects.get(id=id)
+        dispatched = package.dispatched
+        package.dispatched = not dispatched
         package.save()
-        return render(request, self.template )
+        return redirect('rejco:admin')
         
-class UpdateArrivalStatus(LoginRequiredMixin, UserPassesTestMixin,View):
+class UpdateArrivalStatus(LoginRequiredMixin, View):
     login_url = settings.LOGIN_URL
     template = "rejco/admin/index.html"
 
-    #test if the user admin
-    def test_func(self):
-        user = self.request.user
-        return Student.objects.filter(adm_no=user).exists()
-
-    def post(self, request, packageId):
-        package = Package.objects.get(id=packageId)
-        dispatch = package.arrived
-        package.dispatch = not arrived
+    def get(self, request, id):
+        package = Package.objects.get(id=id)
+        arrived = package.arrived
+        package.arrived = not arrived
         package.save()
-        return render(request, self.template )
+        return redirect('rejco:admin')
         
+class Notifications(LoginRequiredMixin, View):
+    login_url = settings.LOGIN_URL
+    template = "rejco/customer/notifications.html"
 
+    def get(self, request):
+        user = self.request.user
+        notifications = Notification.objects.filter(user = user, viewed=False)
+        print(notifications)
+        return render(request, self.template, {'notifications': notifications} )
+
+class NotificationDetail(LoginRequiredMixin, View):
+    login_url = settings.LOGIN_URL
+    template = "rejco/customer/notification_detail.html"
+
+    def get(self, request, id):
+        notification = Notification.objects.get(id = id)
+        return render(request, self.template, {'notification': notification} )
+
+    def post(self, request, id):
+        notification = Notification.objects.get(id=id)
+        notification.viewed = True
+        notification.save()
+        return redirect('rejco:notifications')

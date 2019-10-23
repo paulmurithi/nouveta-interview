@@ -24,17 +24,16 @@
                 <li class="active"><a href="/">Home</a></li>
                 </ul>
 
-                {% if request.user %}
+                {% if user.is_authenticated %}
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#"><li><a href="#"><i class="fa fa-bell"></i><span class="badge">5</span></li></a></li>
                         <li><a href="#"><span class="badge"><i class="fa fa-user"></i>{{request.user}} </a></span></li>
                         <li><a href={% url 'logout'%}>logout</a></span></li>
                     </ul
                 {% else %}
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href={% url 'rejco:register' %}><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                    <li><a href={% url 'login' %}><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href={% url 'rejco:register' %}><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                        <li><a href={% url 'login' %}><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                    </ul>
                 {% endif %}
             </div>
         </nav>

@@ -1,5 +1,6 @@
 .content{
     background-image: url(../images/waves.jpeg);
+    background-repeat: no-repeat;
 }
 
 .services{

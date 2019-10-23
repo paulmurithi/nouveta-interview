@@ -1,0 +1,30 @@
+{% extends 'rejco/customer/base.html' %}
+{% load static %}
+
+
+{% block content%}
+    <table class="table table-hover table-striped">
+    <thead>
+      <caption style="text-align:center;">Notifications</caption>
+      <tr>
+        <th>No.</th>
+        <th>Title</th>
+        <th>Message</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for notification in notifications%}
+      <tr>
+        <td>{{forloop.counter}}.</td>
+        <td>{{notification.title}}</td>
+        <td>{{notification.message}}</td>
+        <td>
+          <form method="post" action="{% url 'rejco:notification_detail' notification.id %}">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-primary">Mark as read</button>
+          </form>
+        <td>
+      </tr>
+    {% endfor %}
+{% endblock %}
