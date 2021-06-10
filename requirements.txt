@@ -2,7 +2,7 @@ asn1crypto==0.24.0
 astroid==2.2.5
 cffi==1.12.3
 cryptography==2.7
-Django==2.1.1
+Django==2.2.24
 django-cors-headers==3.0.2
 django-rest-knox==3.6.0
 djangorestframework==3.9.1
