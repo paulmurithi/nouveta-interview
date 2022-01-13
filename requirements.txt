@@ -11,7 +11,7 @@ isort==4.3.21
 lazy-object-proxy==1.4.1
 mccabe==0.6.1
 mysqlclient==1.4.2.post1
-Pillow==6.0.0
+Pillow==9.0.0
 pkg-resources==0.0.0
 pycparser==2.19
 pylint==2.3.1
